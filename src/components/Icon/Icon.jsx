@@ -1,5 +1,6 @@
 import React from 'react'
 import { Settings, Menu , BarChart2, HelpCircle} from 'react-feather'
+import styled from 'styled-components';
 
 const icons = {
     settings: Settings,
@@ -12,7 +13,7 @@ const Icon = ({id, color, size, strokeWidth, ...delegated}) => {
   const Component = icons[id];
 
   if (!Component) {
-    throw new Error `no icon found for id ${id}`;
+    throw new Error(`no icon found for id ${id}`);
   }
 
   return (
@@ -23,10 +24,9 @@ const Icon = ({id, color, size, strokeWidth, ...delegated}) => {
 }
 
 const Wrapper = styled.div`
-
   & > svg {
     display: block;
-    stroke-width: ${p => p.strokeWidth !== undefined ? p.strokeWidth + 'px' : undefined}
+    stroke-width: ${p => p.strokeWidth !== undefined ? p.strokeWidth + 'px' : undefined};
   }
 
 `;
