@@ -6,15 +6,16 @@ function App() {
 
   return (
     <>
-      <Header>Hello</Header>
-      <header></header>
-      <main></main>
+      <header>Hello</header>
+      <Main></Main>
     </>
   )
 }
 
 export default App;
 
-const Header = styled.h2`
-  font-size: 2rem;
+const Main = styled.main`
+  background-color: var(--color-gray-500);
+  padding: 32px;
+  height: 95%;
 `;
