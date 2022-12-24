@@ -10,13 +10,11 @@ export default function Header() {
                 <Icon id="menu" strokeWidth={2}></Icon>
             </Side>
             <Logo>Wordle</Logo>
-            {/* <Side> */}
                 <IconWrapper>
                     <Icon id="help-circle" strokeWidth={2}>Question Icon</Icon>
                     <Icon id="bar-chart-2" strokeWidth={2}>Stats Icon</Icon>
                     <Icon id="settings" strokeWidth={2}>Settings Icon</Icon>
                 </IconWrapper>
-            {/* </Side> */}
         </Wrapper>
     </header>
   )
