@@ -6,13 +6,17 @@ export default function Header() {
   return (
     <header>
         <Wrapper>
-            <Icon id="menu" strokeWidth={2}></Icon>
+            <Side>
+                <Icon id="menu" strokeWidth={2}></Icon>
+            </Side>
             <Logo>Wordle</Logo>
-            <IconWrapper>
-                <Icon id="help-circle" strokeWidth={2}>Question Icon</Icon>
-                <Icon id="bar-chart-2" strokeWidth={2}>Stats Icon</Icon>
-                <Icon id="settings" strokeWidth={2}>Settings Icon</Icon>
-            </IconWrapper>
+            {/* <Side> */}
+                <IconWrapper>
+                    <Icon id="help-circle" strokeWidth={2}>Question Icon</Icon>
+                    <Icon id="bar-chart-2" strokeWidth={2}>Stats Icon</Icon>
+                    <Icon id="settings" strokeWidth={2}>Settings Icon</Icon>
+                </IconWrapper>
+            {/* </Side> */}
         </Wrapper>
     </header>
   )
@@ -30,9 +34,17 @@ const Wrapper = styled.div`
 
 const IconWrapper = styled.div`
     display: flex;
+    justify-content: flex-end;
     gap: 2px;
+    flex: 1;
 `;
 
 const Logo = styled.h1`
     font-size: 2rem;
 `;
+
+const Side = styled.div`
+    flex: 1;
+    display: flex;
+`;
+
