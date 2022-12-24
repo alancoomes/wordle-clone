@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components';
+import GuessGrid from './components/GuessGrid/GuessGrid';
 import Header from './components/Header/Header';
 
 function App() {
@@ -8,7 +9,10 @@ function App() {
   return (
     <>
       <Header>Hello</Header>
-      <Main></Main>
+      <Main>
+        <GuessGrid/>
+      </Main>
+      
     </>
   )
 }
@@ -19,4 +23,8 @@ const Main = styled.main`
   background-color: var(--color-gray-900);
   padding: 32px;
   height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
