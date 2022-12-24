@@ -45,6 +45,5 @@ const Logo = styled.h1`
 
 const Side = styled.div`
     flex: 1;
-    display: flex;
 `;
 
