@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import styled from 'styled-components';
+import Header from './components/Header/Header';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <header>Hello</header>
+      <Header>Hello</Header>
       <Main></Main>
     </>
   )
@@ -15,7 +16,7 @@ function App() {
 export default App;
 
 const Main = styled.main`
-  background-color: var(--color-gray-500);
+  background-color: var(--color-gray-900);
   padding: 32px;
   height: 95%;
 `;

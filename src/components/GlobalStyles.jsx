@@ -74,6 +74,7 @@ html {
     --color-gray-300: hsl(${COLORS.gray[300]});
     --color-gray-500: hsl(${COLORS.gray[500]});
     --color-gray-700: hsl(${COLORS.gray[700]});
+    --color-gray-900: hsl(${COLORS.gray[900]});
 }
 
 
