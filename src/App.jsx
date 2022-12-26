@@ -12,7 +12,6 @@ function App() {
       <Main>
         <GuessGrid/>
       </Main>
-      
     </>
   )
 }
@@ -22,7 +21,6 @@ export default App;
 const Main = styled.main`
   background-color: var(--color-gray-900);
   padding: 32px;
-  height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
