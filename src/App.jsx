@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import GameBoard from './components/GameBoard/GameBoard';
 import Header from './components/Header/Header';
@@ -7,10 +8,20 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, seError] = useState(null);
   
-  const fetchWord = () => {
+  async function fetchWord()  {
       setLoading(true);
-      fetch()
+      let response = await fetch("https://random-word-api.herokuapp.com/word?length=5");
+      let word = await response.json();
+      console.log(word[0]);
+      setWord(word[0]);
   }
+
+  useEffect(() => {
+    console.log("in useEffect")
+    fetchWord();
+  },[]);
+
+  console.log("State word ", word)
 
   return (
     <AppWrapper>

@@ -1,11 +1,13 @@
-import React from 'react'
+import { useState } from 'react'
 import styled from 'styled-components';
 import GuessGrid from '../GuessGrid/GuessGrid';
 import Keyboard from '../Keyboard/Keyboard';
 
 const GameBoard = () => {
 
-    
+    const [guess, setGuess] = useState(null);
+
+  
 
   return (
     <Main>

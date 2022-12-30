@@ -5,49 +5,50 @@ const Keyboard = () => {
   return (
     <Wrapper>
        <Row>
-        <Key>Q</Key>
-        <Key>W</Key>
-        <Key>E</Key>
-        <Key>R</Key>
-        <Key>T</Key>
-        <Key>Y</Key>
-        <Key>U</Key>
-        <Key>I</Key>
-        <Key>O</Key>
-        <Key>P</Key>
+        <Key data-key="Q">Q</Key>
+        <Key data-key="W">W</Key>
+        <Key data-key="E">E</Key>
+        <Key data-key="R">R</Key>
+        <Key data-key="T">T</Key>
+        <Key data-key="Y">Y</Key>
+        <Key data-key="U">U</Key>
+        <Key data-key="I">I</Key>
+        <Key data-key="O">O</Key>
+        <Key data-key="P">P</Key>
        </Row>
 
       <Row>
         <KeyHalf/>
-        <Key>A</Key>
-        <Key>S</Key>
-        <Key>D</Key>
-        <Key>F</Key>
-        <Key>G</Key>
-        <Key>H</Key>
-        <Key>J</Key>
-        <Key>K</Key>
-        <Key>L</Key>
+        <Key data-key="A">A</Key>
+        <Key data-key="S">S</Key>
+        <Key data-key="D">D</Key>
+        <Key data-key="F">F</Key>
+        <Key data-key="G">G</Key>
+        <Key data-key="H">H</Key>
+        <Key data-key="J">J</Key>
+        <Key data-key="K">K</Key>
+        <Key data-key="L">L</Key>
         <KeyHalf/>
       </Row>
 
       <Row>
 
-        <KeyAndOneHalf>Enter</KeyAndOneHalf>
-        <Key>Z</Key>
-        <Key>X</Key>
-        <Key>C</Key>
-        <Key>V</Key>
-        <Key>B</Key>
-        <Key>N</Key>
-        <Key>M</Key>
-        <Key>Q</Key>
-        <KeyAndOneHalf>Del</KeyAndOneHalf>
+        <KeyAndOneHalf data-key="enter">Enter</KeyAndOneHalf>
+        <Key data-key="Z">Z</Key>
+        <Key data-key="X">X</Key>
+        <Key data-key="C">C</Key>
+        <Key data-key="V">V</Key>
+        <Key data-key="B">B</Key>
+        <Key data-key="N">N</Key>
+        <Key data-key="M">M</Key>
+        <KeyAndOneHalf data-key="delete">Del</KeyAndOneHalf>
       </Row>
         
     </Wrapper>
   )
 }
+
+export default Keyboard;
 
 const Row = styled.div`
   width: 100%;
@@ -83,5 +84,3 @@ const KeyHalf = styled.div`
   flex: .5;
 `;
 
-
-export default Keyboard;
