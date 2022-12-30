@@ -77,6 +77,7 @@ html {
     --color-gray-900: hsl(${COLORS.gray[900]});
     --header-height: 65px;
     --keyboard-height: 200px;
+    font-family: "Roboto", sans-serif;
 
 }
 

@@ -6,41 +6,41 @@ import styled from 'styled-components';
 const GuessGrid = () => {
   return (
     <GridWrapper>
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
 
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
 
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
 
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
 
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
 
-        <Box>1</Box>
-        <Box>2</Box>
-        <Box>3</Box>
-        <Box>4</Box>
-        <Box>5</Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
 
     </GridWrapper>
   )

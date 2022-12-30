@@ -64,6 +64,11 @@ const Wrapper = styled.div`
 `;
 
 const Key = styled.button`
+  font-weight: 900;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: var(--color-gray-300);
   margin: 0;
   padding: 0;
   height: 58px;
