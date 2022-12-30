@@ -4,45 +4,79 @@ import styled from 'styled-components';
 const Keyboard = () => {
   return (
     <Wrapper>
-        <div>Q</div>
-        <div>W</div>
-        <div>E</div>
-        <div>R</div>
-        <div>T</div>
-        <div>Y</div>
-        <div>U</div>
-        <div>I</div>
-        <div>O</div>
-        <div>P</div>
+       <Row>
+        <Key>Q</Key>
+        <Key>W</Key>
+        <Key>E</Key>
+        <Key>R</Key>
+        <Key>T</Key>
+        <Key>Y</Key>
+        <Key>U</Key>
+        <Key>I</Key>
+        <Key>O</Key>
+        <Key>P</Key>
+       </Row>
 
-        <div>A</div>
-        <div>S</div>
-        <div>D</div>
-        <div>F</div>
-        <div>G</div>
-        <div>H</div>
-        <div>J</div>
-        <div>K</div>
-        <div>L</div>
+      <Row>
+        <KeyHalf/>
+        <Key>A</Key>
+        <Key>S</Key>
+        <Key>D</Key>
+        <Key>F</Key>
+        <Key>G</Key>
+        <Key>H</Key>
+        <Key>J</Key>
+        <Key>K</Key>
+        <Key>L</Key>
+        <KeyHalf/>
+      </Row>
 
-        <div>Enter</div>
-        <div>Z</div>
-        <div>X</div>
-        <div>C</div>
-        <div>V</div>
-        <div>B</div>
-        <div>N</div>
-        <div>M</div>
-        <div>Q</div>
-        <div>Del</div>
+      <Row>
+
+        <KeyAndOneHalf>Enter</KeyAndOneHalf>
+        <Key>Z</Key>
+        <Key>X</Key>
+        <Key>C</Key>
+        <Key>V</Key>
+        <Key>B</Key>
+        <Key>N</Key>
+        <Key>M</Key>
+        <Key>Q</Key>
+        <KeyAndOneHalf>Del</KeyAndOneHalf>
+      </Row>
         
     </Wrapper>
   )
 }
 
-const Wrapper = styled.div`
-    text-transform: uppercase;
-    display: grid;
+const Row = styled.div`
+  width: 100%;
+  margin: 0 auto 8px;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
 `;
+
+const Wrapper = styled.div`
+    height: var(--keyboard-height);
+    margin-left: 6px;
+    margin-right: 6px;
+`;
+
+const Key = styled.button`
+  margin: 0;
+  padding: 0;
+  height: 58px;
+  flex: 1;
+`;
+
+const KeyAndOneHalf = styled(Key)`
+  flex: 1.5;
+`;
+
+const KeyHalf = styled.div`
+  flex: .5;
+`;
+
 
 export default Keyboard;

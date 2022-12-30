@@ -75,8 +75,20 @@ html {
     --color-gray-500: hsl(${COLORS.gray[500]});
     --color-gray-700: hsl(${COLORS.gray[700]});
     --color-gray-900: hsl(${COLORS.gray[900]});
+    --header-height: 65px;
+    --keyboard-height: 200px;
+
 }
 
+@media (max-width: 415px) {
+  html {
+    --header-height: 50px;
+  }
+}
+
+body {
+  background-color: var(--color-gray-900);
+}
 
 html, body, #root {
   height: 100%;

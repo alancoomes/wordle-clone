@@ -21,13 +21,14 @@ export default function Header() {
 }
 
 const Wrapper = styled.div`
+    height: var(--header-height);
     background-color: var(--color-gray-900);
     color: var(--color-white);
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     padding: 0px 8px;
-    border-bottom: 2px solid var(--color-gray-500);
+    border-bottom: 2px solid var(--color-gray-300);
 `;
 
 const IconWrapper = styled.div`
@@ -35,6 +36,10 @@ const IconWrapper = styled.div`
     justify-content: flex-end;
     gap: 2px;
     flex: 1;
+
+    & > svg {
+        display: block;
+    }
 `;
 
 const Logo = styled.h1`
