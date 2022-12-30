@@ -7,7 +7,9 @@ const GameBoard = () => {
 
     const [guess, setGuess] = useState(null);
 
-  
+    const handleClickNewLetterGuess = (e) => {
+       console.log(e.target.value);
+    }
 
   return (
     <Main>
@@ -15,7 +17,7 @@ const GameBoard = () => {
       <GuessGrid/>
     </BoardWrapper>
     
-      <Keyboard/>
+      <Keyboard handleClickNewLetterGuess={handleClickNewLetterGuess}/>
     
     </Main>
   )

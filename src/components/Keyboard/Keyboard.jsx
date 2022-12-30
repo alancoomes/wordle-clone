@@ -1,47 +1,47 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Keyboard = () => {
+const Keyboard = ({handleClickNewLetterGuess}) => {
   return (
     <Wrapper>
        <Row>
-        <Key data-key="Q">Q</Key>
-        <Key data-key="W">W</Key>
-        <Key data-key="E">E</Key>
-        <Key data-key="R">R</Key>
-        <Key data-key="T">T</Key>
-        <Key data-key="Y">Y</Key>
-        <Key data-key="U">U</Key>
-        <Key data-key="I">I</Key>
-        <Key data-key="O">O</Key>
-        <Key data-key="P">P</Key>
+        <Key onClick={handleClickNewLetterGuess} value="Q">Q</Key>
+        <Key value="W">W</Key>
+        <Key value="E">E</Key>
+        <Key value="R">R</Key>
+        <Key value="T">T</Key>
+        <Key value="Y">Y</Key>
+        <Key value="U">U</Key>
+        <Key value="I">I</Key>
+        <Key value="O">O</Key>
+        <Key value="P">P</Key>
        </Row>
 
       <Row>
         <KeyHalf/>
-        <Key data-key="A">A</Key>
-        <Key data-key="S">S</Key>
-        <Key data-key="D">D</Key>
-        <Key data-key="F">F</Key>
-        <Key data-key="G">G</Key>
-        <Key data-key="H">H</Key>
-        <Key data-key="J">J</Key>
-        <Key data-key="K">K</Key>
-        <Key data-key="L">L</Key>
+        <Key value="A">A</Key>
+        <Key value="S">S</Key>
+        <Key value="D">D</Key>
+        <Key value="F">F</Key>
+        <Key value="G">G</Key>
+        <Key value="H">H</Key>
+        <Key value="J">J</Key>
+        <Key value="K">K</Key>
+        <Key value="L">L</Key>
         <KeyHalf/>
       </Row>
 
       <Row>
 
-        <KeyAndOneHalf data-key="enter">Enter</KeyAndOneHalf>
-        <Key data-key="Z">Z</Key>
-        <Key data-key="X">X</Key>
-        <Key data-key="C">C</Key>
-        <Key data-key="V">V</Key>
-        <Key data-key="B">B</Key>
-        <Key data-key="N">N</Key>
-        <Key data-key="M">M</Key>
-        <KeyAndOneHalf data-key="delete">Del</KeyAndOneHalf>
+        <KeyAndOneHalf value="enter">Enter</KeyAndOneHalf>
+        <Key value="Z">Z</Key>
+        <Key value="X">X</Key>
+        <Key value="C">C</Key>
+        <Key value="V">V</Key>
+        <Key value="B">B</Key>
+        <Key value="N">N</Key>
+        <Key value="M">M</Key>
+        <KeyAndOneHalf value="delete">Del</KeyAndOneHalf>
       </Row>
         
     </Wrapper>
