@@ -7,7 +7,7 @@ import { boardDefault } from "./constants";
 export const BoardContext = createContext(boardDefault);
 
 function App() {
-  const [word, setWord] = useState("stare");
+  const [word, setWord] = useState(["S", "T", "A", "R", "E"]);
   const [loading, setLoading] = useState(false);
   const [error, seError] = useState(null);
   const [board, setBoard] = useState(boardDefault);
@@ -15,6 +15,33 @@ function App() {
     attempt: 0,
     letterPosition: 0,
   });
+
+  const onSelectLetter = (keyVal) => {
+    if (currAttempt.letterPosition > 4) return;
+    const newBoard = [...board];
+    newBoard[currAttempt.attempt][currAttempt.letterPosition] = keyVal;
+    setBoard(newBoard);
+    setCurrAttempt({
+      ...currAttempt,
+      letterPosition: currAttempt.letterPosition + 1,
+    });
+  };
+
+  const onEnter = () => {
+    if (currAttempt.letterPosition !== 5) return;
+    setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
+  };
+
+  const onDelete = () => {
+    if (currAttempt.letterPosition === 0) return;
+    const newBoard = [...board];
+    newBoard[currAttempt.attempt][currAttempt.letterPosition - 1] = "";
+    setBoard(newBoard);
+    setCurrAttempt({
+      ...currAttempt,
+      letterPosition: currAttempt.letterPosition - 1,
+    });
+  };
 
   // async function fetchWord()  {
   //     setLoading(true);
@@ -36,6 +63,9 @@ function App() {
           setBoard,
           currAttempt,
           setCurrAttempt,
+          onSelectLetter,
+          onDelete,
+          onEnter,
         }}
       >
         <GameBoard word={word} />

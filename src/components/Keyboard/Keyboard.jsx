@@ -33,34 +33,24 @@ const Keyboard = () => {
     <Wrapper>
       <Row>
         {row1.map((letter) => (
-          <Key key={letter} value={letter}>
-            {letter}
-          </Key>
+          <Key key={letter} keyVal={letter} />
         ))}
       </Row>
 
       <Row>
         <KeyHalf />
         {row2.map((letter) => (
-          <Key key={letter} value={letter}>
-            {letter}
-          </Key>
+          <Key key={letter} keyVal={letter} />
         ))}
         <KeyHalf />
       </Row>
 
       <Row>
-        <Key bigKey value="Enter">
-          Enter
-        </Key>
+        <Key bigKey keyVal={"Enter"} />
         {row3.map((letter) => (
-          <Key key={letter} value={letter}>
-            {letter}
-          </Key>
+          <Key key={letter} keyVal={letter} />
         ))}
-        <Key bigKey value="Delete">
-          Del
-        </Key>
+        <Key bigKey keyVal={"Delete"} />
       </Row>
     </Wrapper>
   );
@@ -80,10 +70,6 @@ const Wrapper = styled.div`
   height: var(--keyboard-height);
   margin-left: 6px;
   margin-right: 6px;
-`;
-
-const KeyAndOneHalf = styled(Key)`
-  flex: 1.5;
 `;
 
 const KeyHalf = styled.div`

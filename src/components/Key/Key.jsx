@@ -2,21 +2,21 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
 
-const Key = ({ value, bigKey }) => {
-  const { board, setBoard, currAttempt, setCurrAttempt } =
-    useContext(BoardContext);
+const Key = ({ keyVal, bigKey }) => {
+  const { onSelectLetter, onEnter, onDelete } = useContext(BoardContext);
   const handleClick = (e) => {
-    debugger;
-    const { attempt, letterPosition } = currAttempt;
-    const newBoard = [...board];
-    newBoard[attempt][letterPosition] = e.target.value;
-    setCurrAttempt({ ...currAttempt, letterPosition: letterPosition + 1 });
-    setBoard(newBoard);
+    if (keyVal === "Enter") {
+      onEnter();
+    } else if (keyVal === "Delete") {
+      onDelete();
+    } else {
+      onSelectLetter(keyVal);
+    }
   };
 
   return (
-    <KeyButton id={bigKey && "big"} onClick={handleClick} value={value}>
-      {value}
+    <KeyButton id={bigKey && "big"} onClick={handleClick}>
+      {keyVal}
     </KeyButton>
   );
 };
