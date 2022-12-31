@@ -3,11 +3,12 @@ import { Grid } from 'react-feather';
 import styled from 'styled-components';
 
 
-const GuessGrid = ({letter}) => {
+const GuessGrid = ({letterObj}) => {
 
   const [letterCount, setLetterCount] = useState(0)
  
   useEffect(() => {
+    const letter = letterObj.letter;
     if(letter === "") return
     if(letterCount >= 5) return
     const nextTile = document.querySelector(".tile:not([data-letter])")
@@ -16,9 +17,9 @@ const GuessGrid = ({letter}) => {
     nextTile.classList.add("filled");
     nextTile.textContent = letter;
     setLetterCount(letterCount + 1);
-  }, [letter]);
+  }, [letterObj]);
 
-  
+
 
 
   return (
