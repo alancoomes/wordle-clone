@@ -1,52 +1,70 @@
-import React from 'react'
-import styled from 'styled-components';
+import React, { useContext, useEffect } from "react";
+import styled from "styled-components";
+import { BoardContext } from "../../App";
+import Key from "../Key/Key";
 
-const Keyboard = ({handleClick}) => {
+const Keyboard = () => {
+  const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+  const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+  const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
+  const { board, setBoard } = useContext(BoardContext);
+
+  useEffect(() => {
+    document.addEventListener("keydown", detectKeyDown, true);
+  }, []);
+
+  const detectKeyDown = (e) => {
+    if (e.key === "Enter") {
+      submitGuess();
+      return;
+    }
+    if (e.key === "Delete" || e.key === "Backspace") {
+      deleteLetter();
+      return;
+    }
+    if (e.key.match(/[a-z]/)) {
+      const newBoard = [...board];
+      newBoard[0][0] = e.key.toUpperCase();
+      setBoard(newBoard);
+    }
+  };
+
   return (
     <Wrapper>
-       <Row>
-        <Key onClick={handleClick} value="Q">Q</Key>
-        <Key onClick={handleClick} value="W">W</Key>
-        <Key onClick={handleClick} value="E">E</Key>
-        <Key onClick={handleClick} value="R">R</Key>
-        <Key onClick={handleClick} value="T">T</Key>
-        <Key onClick={handleClick} value="Y">Y</Key>
-        <Key onClick={handleClick} value="U">U</Key>
-        <Key onClick={handleClick} value="I">I</Key>
-        <Key onClick={handleClick} value="O">O</Key>
-        <Key onClick={handleClick} value="P">P</Key>
-       </Row>
-
       <Row>
-        <KeyHalf/>
-        <Key onClick={handleClick} value="A">A</Key>
-        <Key onClick={handleClick} value="S">S</Key>
-        <Key onClick={handleClick} value="D">D</Key>
-        <Key onClick={handleClick} value="F">F</Key>
-        <Key onClick={handleClick} value="G">G</Key>
-        <Key onClick={handleClick} value="H">H</Key>
-        <Key onClick={handleClick} value="J">J</Key>
-        <Key onClick={handleClick} value="K">K</Key>
-        <Key onClick={handleClick} value="L">L</Key>
-        <KeyHalf/>
+        {row1.map((letter) => (
+          <Key key={letter} value={letter}>
+            {letter}
+          </Key>
+        ))}
       </Row>
 
       <Row>
-
-        <KeyAndOneHalf onClick={handleClick} value="Enter">Enter</KeyAndOneHalf>
-        <Key onClick={handleClick} value="Z">Z</Key>
-        <Key onClick={handleClick} value="X">X</Key>
-        <Key onClick={handleClick} value="C">C</Key>
-        <Key onClick={handleClick} value="V">V</Key>
-        <Key onClick={handleClick} value="B">B</Key>
-        <Key onClick={handleClick} value="N">N</Key>
-        <Key onClick={handleClick} value="M">M</Key>
-        <KeyAndOneHalf onClick={handleClick} value="Delete">Del</KeyAndOneHalf>
+        <KeyHalf />
+        {row2.map((letter) => (
+          <Key key={letter} value={letter}>
+            {letter}
+          </Key>
+        ))}
+        <KeyHalf />
       </Row>
-        
+
+      <Row>
+        <Key bigKey value="Enter">
+          Enter
+        </Key>
+        {row3.map((letter) => (
+          <Key key={letter} value={letter}>
+            {letter}
+          </Key>
+        ))}
+        <Key bigKey value="Delete">
+          Del
+        </Key>
+      </Row>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default Keyboard;
 
@@ -59,21 +77,9 @@ const Row = styled.div`
 `;
 
 const Wrapper = styled.div`
-    height: var(--keyboard-height);
-    margin-left: 6px;
-    margin-right: 6px;
-`;
-
-const Key = styled.button`
-  font-weight: 900;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  background-color: var(--color-gray-300);
-  margin: 0;
-  padding: 0;
-  height: 58px;
-  flex: 1;
+  height: var(--keyboard-height);
+  margin-left: 6px;
+  margin-right: 6px;
 `;
 
 const KeyAndOneHalf = styled(Key)`
@@ -81,6 +87,5 @@ const KeyAndOneHalf = styled(Key)`
 `;
 
 const KeyHalf = styled.div`
-  flex: .5;
+  flex: 0.5;
 `;
-

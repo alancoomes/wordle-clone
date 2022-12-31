@@ -1,69 +1,44 @@
-import { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import GuessGrid from '../GuessGrid/GuessGrid';
-import Keyboard from '../Keyboard/Keyboard';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import GuessGrid from "../GuessGrid/GuessGrid";
+import Keyboard from "../Keyboard/Keyboard";
 
-const GameBoard = () => {
+const GameBoard = ({ word }) => {
+  const [guess, setGuess] = useState("");
+  const [letterObj, setLetter] = useState({ currentPosition: 0, letter: "" });
 
-    const [guess, setGuess] = useState(null);
-    const [letterObj, setLetter] = useState({sameLetterCnt: 0, letter: ""});
-
-    useEffect(() => {
-        document.addEventListener("keydown", detectKeyDown, true);
-    },[]);
-
-    const detectKeyDown = (e) => {
-        if(e.key === 'Enter') {
-            submitGuess();
-            return
-        }
-        if (e.key === 'Delete' || e.key === 'Backspace') {
-            deleteLetter();
-            return
-        } 
-        if (e.key === letterObj.letter) {
-            setLetter({...letterObj, sameLetterCnt: letterObj.sameLetterCnt + 1});
-           }
-        if (e.key.match(/[a-z]/)) {
-            setLetter({...letterObj, letter: e.key.toUpperCase()});
-        }
+  const handleClick = (e) => {
+    if (e.target.value === "Enter") {
+      submitGuess();
+      return;
     }
-
-
-    const handleClick = (e) => {
-       if(e.target.value === 'Enter') {
-        submitGuess()
-        return
-       }
-       if(e.target.value === 'Delete') {
-        deleteLetter()
-        return
-       }
-       if (e.target.value === letterObj.letter) {
-        setLetter({...letterObj, sameLetterCnt: letterObj.sameLetterCnt + 1});
-       }
-       setLetter({...letterObj, letter: e.target.value});
+    if (e.target.value === "Delete") {
+      deleteLetter();
+      return;
     }
-
-    const submitGuess = () => {
-        
+    if (e.target.value === letterObj.letter) {
+      setLetter({ ...letterObj, sameLetterCnt: letterObj.sameLetterCnt + 1 });
     }
+    setLetter({ ...letterObj, letter: e.target.value });
+  };
 
-    const deleteLetter = (e) => {
-
+  const submitGuess = () => {
+    if (guess === word) {
     }
+  };
+
+  const deleteLetter = (e) => {};
 
   return (
     <Main>
-    <BoardWrapper>
-      <GuessGrid letterObj={letterObj}/>
-    </BoardWrapper>
-    
-      <Keyboard handleClick={handleClick}/>
-    
+      <BoardWrapper>
+        <GuessGrid letterObj={letterObj} />
+      </BoardWrapper>
+
+      <Keyboard />
     </Main>
-  )
-}
+  );
+};
 
 const BoardWrapper = styled.div`
   flex-grow: 1;
@@ -81,6 +56,5 @@ const Main = styled.main`
   flex-direction: column;
   margin: 0 auto;
 `;
-
 
 export default GameBoard;
