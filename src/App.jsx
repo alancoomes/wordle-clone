@@ -12,16 +12,13 @@ function App() {
       setLoading(true);
       let response = await fetch("https://random-word-api.herokuapp.com/word?length=5");
       let word = await response.json();
-      console.log(word[0]);
       setWord(word[0]);
   }
 
   useEffect(() => {
-    console.log("in useEffect")
     fetchWord();
   },[]);
 
-  console.log("State word ", word)
 
   return (
     <AppWrapper>

@@ -1,48 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid } from 'react-feather';
 import styled from 'styled-components';
 
 
-const GuessGrid = () => {
+const GuessGrid = ({letter}) => {
+
+  const [letterCount, setLetterCount] = useState(0)
+ 
+  useEffect(() => {
+    if(letter === "") return
+    const nextTile = document.querySelector(".tile:not([data-letter])")
+    console.log(letter)
+    nextTile.dataset.letter = letter;
+    nextTile.classList.add("filled");
+    nextTile.textContent = letter;
+  }, [letter]);
 
 
   return (
     <GridWrapper>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
 
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
 
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
 
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
 
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
 
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
-        <Box></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
+        <Box className='tile'></Box>
 
     </GridWrapper>
   )
@@ -58,7 +69,16 @@ const GridWrapper = styled.div`
 `;
 
 const Box = styled.div`
-  border: 2px solid var(--color-gray-300);
+  border: 2px solid var(--color-gray-500);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+
+  &.filled {
+    border-color: var(--color-gray-300);
+  }
 `;
 
 export default GuessGrid;

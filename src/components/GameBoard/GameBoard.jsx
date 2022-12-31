@@ -6,18 +6,27 @@ import Keyboard from '../Keyboard/Keyboard';
 const GameBoard = () => {
 
     const [guess, setGuess] = useState(null);
+    const [letter, setLetter] = useState("");
 
-    const handleClickNewLetterGuess = (e) => {
-       console.log(e.target.value);
+    const handleNewLetterGuess = (e) => {
+       setLetter(e.target.value);
+    }
+
+    const handleEnterGuess = (e) => {
+        console.log(e.target.value);
+    }
+
+    const handleDeleteLetter = (e) => {
+        console.log(e.target.value);
     }
 
   return (
     <Main>
     <BoardWrapper>
-      <GuessGrid/>
+      <GuessGrid letter={letter}/>
     </BoardWrapper>
     
-      <Keyboard handleClickNewLetterGuess={handleClickNewLetterGuess}/>
+      <Keyboard newLetterGuess={handleNewLetterGuess} enterGuess={handleEnterGuess} deleteLetter={handleDeleteLetter}/>
     
     </Main>
   )

@@ -1,47 +1,47 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Keyboard = ({handleClickNewLetterGuess}) => {
+const Keyboard = ({newLetterGuess, enterGuess, deleteLetter}) => {
   return (
     <Wrapper>
        <Row>
-        <Key onClick={handleClickNewLetterGuess} value="Q">Q</Key>
-        <Key value="W">W</Key>
-        <Key value="E">E</Key>
-        <Key value="R">R</Key>
-        <Key value="T">T</Key>
-        <Key value="Y">Y</Key>
-        <Key value="U">U</Key>
-        <Key value="I">I</Key>
-        <Key value="O">O</Key>
-        <Key value="P">P</Key>
+        <Key onClick={newLetterGuess} value="Q">Q</Key>
+        <Key onClick={newLetterGuess} value="W">W</Key>
+        <Key onClick={newLetterGuess} value="E">E</Key>
+        <Key onClick={newLetterGuess} value="R">R</Key>
+        <Key onClick={newLetterGuess} value="T">T</Key>
+        <Key onClick={newLetterGuess} value="Y">Y</Key>
+        <Key onClick={newLetterGuess} value="U">U</Key>
+        <Key onClick={newLetterGuess} value="I">I</Key>
+        <Key onClick={newLetterGuess} value="O">O</Key>
+        <Key onClick={newLetterGuess} value="P">P</Key>
        </Row>
 
       <Row>
         <KeyHalf/>
-        <Key value="A">A</Key>
-        <Key value="S">S</Key>
-        <Key value="D">D</Key>
-        <Key value="F">F</Key>
-        <Key value="G">G</Key>
-        <Key value="H">H</Key>
-        <Key value="J">J</Key>
-        <Key value="K">K</Key>
-        <Key value="L">L</Key>
+        <Key onClick={newLetterGuess} value="A">A</Key>
+        <Key onClick={newLetterGuess} value="S">S</Key>
+        <Key onClick={newLetterGuess} value="D">D</Key>
+        <Key onClick={newLetterGuess} value="F">F</Key>
+        <Key onClick={newLetterGuess} value="G">G</Key>
+        <Key onClick={newLetterGuess} value="H">H</Key>
+        <Key onClick={newLetterGuess} value="J">J</Key>
+        <Key onClick={newLetterGuess} value="K">K</Key>
+        <Key onClick={newLetterGuess} value="L">L</Key>
         <KeyHalf/>
       </Row>
 
       <Row>
 
-        <KeyAndOneHalf value="enter">Enter</KeyAndOneHalf>
-        <Key value="Z">Z</Key>
-        <Key value="X">X</Key>
-        <Key value="C">C</Key>
-        <Key value="V">V</Key>
-        <Key value="B">B</Key>
-        <Key value="N">N</Key>
-        <Key value="M">M</Key>
-        <KeyAndOneHalf value="delete">Del</KeyAndOneHalf>
+        <KeyAndOneHalf onClick={enterGuess} value="enter">Enter</KeyAndOneHalf>
+        <Key onClick={newLetterGuess} value="Z">Z</Key>
+        <Key onClick={newLetterGuess} value="X">X</Key>
+        <Key onClick={newLetterGuess} value="C">C</Key>
+        <Key onClick={newLetterGuess} value="V">V</Key>
+        <Key onClick={newLetterGuess} value="B">B</Key>
+        <Key onClick={newLetterGuess} value="N">N</Key>
+        <Key onClick={newLetterGuess} value="M">M</Key>
+        <KeyAndOneHalf onClick={deleteLetter} value="delete">Del</KeyAndOneHalf>
       </Row>
         
     </Wrapper>
