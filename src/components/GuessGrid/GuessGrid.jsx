@@ -19,8 +19,9 @@ const GuessGrid = ({letterObj}) => {
     setLetterCount(letterCount + 1);
   }, [letterObj]);
 
+  const handleKeyPress = (e) => {
 
-
+  }
 
   return (
     <GridWrapper>

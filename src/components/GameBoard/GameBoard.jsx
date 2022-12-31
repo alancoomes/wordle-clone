@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import GuessGrid from '../GuessGrid/GuessGrid';
 import Keyboard from '../Keyboard/Keyboard';
@@ -8,20 +8,48 @@ const GameBoard = () => {
     const [guess, setGuess] = useState(null);
     const [letterObj, setLetter] = useState({sameLetterCnt: 0, letter: ""});
 
+    useEffect(() => {
+        document.addEventListener("keydown", detectKeyDown, true);
+    },[]);
 
-    const handleNewLetterGuess = (e) => {
+    const detectKeyDown = (e) => {
+        if(e.key === 'Enter') {
+            submitGuess();
+            return
+        }
+        if (e.key === 'Delete' || e.key === 'Backspace') {
+            deleteLetter();
+            return
+        } 
+        if (e.key === letterObj.letter) {
+            setLetter({...letterObj, sameLetterCnt: letterObj.sameLetterCnt + 1});
+           }
+        if (e.key.match(/[a-z]/)) {
+            setLetter({...letterObj, letter: e.key.toUpperCase()});
+        }
+    }
+
+
+    const handleClick = (e) => {
+       if(e.target.value === 'Enter') {
+        submitGuess()
+        return
+       }
+       if(e.target.value === 'Delete') {
+        deleteLetter()
+        return
+       }
        if (e.target.value === letterObj.letter) {
         setLetter({...letterObj, sameLetterCnt: letterObj.sameLetterCnt + 1});
        }
        setLetter({...letterObj, letter: e.target.value});
     }
 
-    const handleEnterGuess = (e) => {
-        console.log(e.target.value);
+    const submitGuess = () => {
+        
     }
 
-    const handleDeleteLetter = (e) => {
-        console.log(document.querySelectorAll('.tile.filled'));
+    const deleteLetter = (e) => {
 
     }
 
@@ -31,7 +59,7 @@ const GameBoard = () => {
       <GuessGrid letterObj={letterObj}/>
     </BoardWrapper>
     
-      <Keyboard newLetterGuess={handleNewLetterGuess} enterGuess={handleEnterGuess} deleteLetter={handleDeleteLetter}/>
+      <Keyboard handleClick={handleClick}/>
     
     </Main>
   )
