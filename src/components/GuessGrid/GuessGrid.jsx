@@ -9,12 +9,16 @@ const GuessGrid = ({letter}) => {
  
   useEffect(() => {
     if(letter === "") return
+    if(letterCount >= 5) return
     const nextTile = document.querySelector(".tile:not([data-letter])")
     console.log(letter)
     nextTile.dataset.letter = letter;
     nextTile.classList.add("filled");
     nextTile.textContent = letter;
+    setLetterCount(letterCount + 1);
   }, [letter]);
+
+  
 
 
   return (
