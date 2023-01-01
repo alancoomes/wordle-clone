@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import { boardDefault } from "./constants";
 
 export const BoardContext = createContext(boardDefault);
+let count = 0;
 
 function App() {
   const [word, setWord] = useState(["S", "T", "A", "R", "E"]);
@@ -17,6 +18,14 @@ function App() {
   });
 
   const onSelectLetter = (keyVal) => {
+    console.log(
+      "attempt: ",
+      currAttempt.attempt,
+      "letterPosition: ",
+      currAttempt.letterPosition,
+      "count: ",
+      count
+    );
     if (currAttempt.letterPosition > 4) return;
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.letterPosition] = keyVal;

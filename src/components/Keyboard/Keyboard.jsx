@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
 import Key from "../Key/Key";
@@ -7,30 +7,31 @@ const Keyboard = () => {
   const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const { board, setBoard } = useContext(BoardContext);
+  const { onSelectLetter, onDelete, onEnter } = useContext(BoardContext);
+
+  const detectKeyDown = useCallback((e) => {
+    e.stopPropagation();
+    if (e.key === "Enter") {
+      onEnter();
+    } else if (e.key === "Delete" || e.key === "Backspace") {
+      onDelete();
+    } else {
+      if (e.key.match(/^[a-z]$/)) {
+        onSelectLetter(e.key.toUpperCase());
+      }
+    }
+  });
 
   useEffect(() => {
-    document.addEventListener("keydown", detectKeyDown, true);
-  }, []);
+    document.addEventListener("keydown", detectKeyDown);
 
-  const detectKeyDown = (e) => {
-    if (e.key === "Enter") {
-      submitGuess();
-      return;
-    }
-    if (e.key === "Delete" || e.key === "Backspace") {
-      deleteLetter();
-      return;
-    }
-    if (e.key.match(/[a-z]/)) {
-      const newBoard = [...board];
-      newBoard[0][0] = e.key.toUpperCase();
-      setBoard(newBoard);
-    }
-  };
+    return () => {
+      document.removeEventListener("keydown", detectKeyDown);
+    };
+  }, [detectKeyDown]);
 
   return (
-    <Wrapper>
+    <Wrapper onKeyDown={detectKeyDown}>
       <Row>
         {row1.map((letter) => (
           <Key key={letter} keyVal={letter} />
