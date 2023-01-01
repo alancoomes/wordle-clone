@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
 import PropTypes from "prop-types";
 
 const Key = ({ keyVal, bigKey }) => {
   const { onSelectLetter, onEnter, onDelete } = useContext(BoardContext);
+  const [guessedLetters, setGuessedLetters] = useState({});
+
+  const
+
   const handleClick = () => {
     if (keyVal === "Enter") {
       onEnter();
@@ -14,6 +18,8 @@ const Key = ({ keyVal, bigKey }) => {
       onSelectLetter(keyVal);
     }
   };
+
+
 
   return (
     <KeyButton id={bigKey && "big"} onClick={handleClick}>

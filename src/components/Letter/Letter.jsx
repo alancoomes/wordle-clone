@@ -15,7 +15,13 @@ const Letter = ({ letterPos, attemptVal }) => {
 
   const letterState =
     (finalGuess || currAttempt.attempt > attemptVal) &&
-    (correct ? "correct" : exists ? "exists" : "wrong");
+    (correct
+      ? "correct"
+      : exists
+      ? "exists"
+      : letter !== ""
+      ? "wrong"
+      : undefined);
   return (
     <Box
       id={letterState ? letterState : undefined}

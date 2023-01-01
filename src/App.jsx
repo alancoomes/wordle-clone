@@ -13,7 +13,10 @@ function App() {
     attempt: 0,
     letterPosition: 0,
   });
-  const [wordSet, setWordSet] = useState([]);
+  const [wordSet, setWordSet] = useState(new Set());
+  const [disabledLetters, setDisabledLetters] = useState([]);
+  const [correctLetters, setCorrectLetters] = useState([]);
+  const [almostLetters, setAlmostLetters] = useState([]);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -39,17 +42,22 @@ function App() {
 
   const onEnter = () => {
     console.log(correctWord);
+    //Check is guess has 5 letters, TODO: add alert if not
     if (currAttempt.letterPosition !== 5) return;
-    if (currAttempt.attempt === 5) {
-      return;
-    }
-    const guess = board[currAttempt.attempt];
+    //Check if attempt is last attempt, TODO: fix functionality
+    if (currAttempt.attempt === 5) return;
+
+    let guess = board[currAttempt.attempt];
+    //Check if guess is acceptable based on word bank, TODO: add shake animation if failed
     if (!wordSet.has(guess.join("").toLowerCase())) return;
-    if (isGuessRight(guess, correctWord)) {
-      setCurrAttempt({ attempt: 5, letterposition: 4 });
-    }
+
+    //Check if guess is correct, TODO:
     if (currAttempt.attempt !== 5) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
+    }
+    if (guess.join("").toLowerCase() === correctWord) {
+      console.log("guess is correct");
+      setCurrAttempt({ attempt: 5, letterposition: 4 });
     }
   };
 
@@ -64,23 +72,14 @@ function App() {
     });
   };
 
-  const isGuessRight = (guess, answer) => {
+  const setLetterCat = (guess, answer) => {
+    const answerArr = answer.
     for (let i = 0; i < guess.length; i++) {
-      if (guess[i] !== answer[i]) return false;
+      if (guess[i] === answer[i]) return false;
     }
     return true;
   };
 
-  // async function fetchWord()  {
-  //     setLoading(true);
-  //     let response = await fetch("https://random-word-api.herokuapp.com/word?length=5");
-  //     let word = await response.json();
-  //     setWord(word[0]);
-  // }
-
-  // useEffect(() => {
-  //   fetchWord();
-  // },[]);
 
   return (
     <AppWrapper>
