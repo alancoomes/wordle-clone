@@ -29,7 +29,9 @@ function App() {
 
   const onEnter = () => {
     if (currAttempt.letterPosition !== 5) return;
-    setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
+    if (currAttempt.attempt !== 5) {
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
+    }
   };
 
   const onDelete = () => {

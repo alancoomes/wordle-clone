@@ -11,10 +11,8 @@ const Keyboard = () => {
 
   const detectKeyDown = (e) => {
     e.stopPropagation();
-    console.log("outside if statement: ", e.key);
     if (e.key === "Enter") {
-      console.log("in enter if statement: ", e.key);
-      onEnter(e);
+      onEnter();
       return;
     } else if (e.key === "Delete" || e.key === "Backspace") {
       onDelete();

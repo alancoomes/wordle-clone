@@ -22,13 +22,6 @@ const GameBoard = ({ word }) => {
     setLetter({ ...letterObj, letter: e.target.value });
   };
 
-  const submitGuess = () => {
-    if (guess === word) {
-    }
-  };
-
-  const deleteLetter = (e) => {};
-
   return (
     <Main>
       <BoardWrapper>
