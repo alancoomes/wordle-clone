@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
+import PropTypes from "prop-types";
 
 const Letter = ({ letterPos, attemptVal }) => {
   const { board } = useContext(BoardContext);
   const letter = board[attemptVal][letterPos];
-  return <Box>{letter}</Box>;
+  return <Box className={letter !== "" && "active"}>{letter}</Box>;
 };
 
 export default Letter;
+
+Letter.propTypes = {
+  letterPos: PropTypes.number,
+  attemptVal: PropTypes.number,
+};
 
 const Box = styled.div`
   border: 2px solid var(--color-gray-500);

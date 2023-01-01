@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import styled from "styled-components";
 import GameBoard from "./components/GameBoard/GameBoard";
 import Header from "./components/Header/Header";
@@ -7,9 +7,9 @@ import { boardDefault } from "./constants";
 export const BoardContext = createContext(boardDefault);
 
 function App() {
-  const [word, setWord] = useState(["S", "T", "A", "R", "E"]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const word = ["S", "T", "A", "R", "E"];
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({
     attempt: 0,
@@ -32,6 +32,10 @@ function App() {
     if (currAttempt.attempt !== 5) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
     }
+    const guess = board[currAttempt.attempt];
+    if (isGuessRight(guess, word)) {
+      setCurrAttempt({ attempt: 5, letterposition: 4 });
+    }
   };
 
   const onDelete = () => {
@@ -43,6 +47,13 @@ function App() {
       ...currAttempt,
       letterPosition: currAttempt.letterPosition - 1,
     });
+  };
+
+  const isGuessRight = (guess, answer) => {
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] !== answer[i]) return false;
+    }
+    return true;
   };
 
   // async function fetchWord()  {
@@ -70,7 +81,7 @@ function App() {
           onEnter,
         }}
       >
-        <GameBoard word={word} />
+        <GameBoard />
       </BoardContext.Provider>
     </AppWrapper>
   );

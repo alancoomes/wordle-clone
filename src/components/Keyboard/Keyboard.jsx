@@ -9,7 +9,7 @@ const Keyboard = () => {
   const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
   const { onSelectLetter, onDelete, onEnter } = useContext(BoardContext);
 
-  const detectKeyDown = (e) => {
+  const detectKeyDown = useCallback((e) => {
     e.stopPropagation();
     if (e.key === "Enter") {
       onEnter();
@@ -21,7 +21,7 @@ const Keyboard = () => {
         onSelectLetter(e.key.toUpperCase());
       }
     }
-  };
+  });
 
   useEffect(() => {
     document.addEventListener("keydown", detectKeyDown);
