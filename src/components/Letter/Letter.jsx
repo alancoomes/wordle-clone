@@ -4,9 +4,26 @@ import { BoardContext } from "../../App";
 import PropTypes from "prop-types";
 
 const Letter = ({ letterPos, attemptVal }) => {
-  const { board } = useContext(BoardContext);
+  const { board, correctWord, currAttempt } = useContext(BoardContext);
   const letter = board[attemptVal][letterPos];
-  return <Box className={letter !== "" && "active"}>{letter}</Box>;
+
+  const correctWordArr = correctWord.toUpperCase().split("");
+  const correct = correctWordArr[letterPos] === letter;
+  const exists = !correct && correctWordArr.includes(letter);
+  const finalGuess =
+    currAttempt.attempt === 5 && currAttempt.letterPosition === 5;
+
+  const letterState =
+    (finalGuess || currAttempt.attempt > attemptVal) &&
+    (correct ? "correct" : exists ? "exists" : "wrong");
+  return (
+    <Box
+      id={letterState ? letterState : undefined}
+      className={!letterState && letter !== "" && "active"}
+    >
+      {letter}
+    </Box>
+  );
 };
 
 export default Letter;
@@ -28,11 +45,16 @@ const Box = styled.div`
     border-color: var(--color-gray-300);
   }
 
-  &.exists {
+  &#exists {
     background-color: var(--color-secondary);
   }
 
-  &.correct {
+  &#correct {
     background-color: var(--color-primary);
+  }
+
+  &#wrong {
+    background-color: var(--color-gray-500);
+    border-color: var(--color-gray-500);
   }
 `;

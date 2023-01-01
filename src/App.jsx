@@ -1,20 +1,30 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
 import GameBoard from "./components/GameBoard/GameBoard";
 import Header from "./components/Header/Header";
-import { boardDefault } from "./constants";
+import { boardDefault, generateWordSet } from "./constants";
 
 export const BoardContext = createContext(boardDefault);
 
 function App() {
-  const word = ["S", "T", "A", "R", "E"];
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  const [correctWord, setCorrectWord] = useState("");
   const [board, setBoard] = useState(boardDefault);
   const [currAttempt, setCurrAttempt] = useState({
     attempt: 0,
     letterPosition: 0,
   });
+  const [wordSet, setWordSet] = useState([]);
+
+  useEffect(() => {
+    generateWordSet().then((words) => {
+      setWordSet(words.wordSet);
+
+      const wordArr = Array.from(words.wordSet);
+      let randIndex = Math.floor(Math.random() * wordArr.length);
+      let newWord = wordArr[randIndex];
+      setCorrectWord(newWord);
+    });
+  }, []);
 
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPosition > 4) return;
@@ -28,13 +38,18 @@ function App() {
   };
 
   const onEnter = () => {
+    console.log(correctWord);
     if (currAttempt.letterPosition !== 5) return;
-    if (currAttempt.attempt !== 5) {
-      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
+    if (currAttempt.attempt === 5) {
+      return;
     }
     const guess = board[currAttempt.attempt];
-    if (isGuessRight(guess, word)) {
+    if (!wordSet.has(guess.join("").toLowerCase())) return;
+    if (isGuessRight(guess, correctWord)) {
       setCurrAttempt({ attempt: 5, letterposition: 4 });
+    }
+    if (currAttempt.attempt !== 5) {
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPosition: 0 });
     }
   };
 
@@ -79,6 +94,7 @@ function App() {
           onSelectLetter,
           onDelete,
           onEnter,
+          correctWord,
         }}
       >
         <GameBoard />

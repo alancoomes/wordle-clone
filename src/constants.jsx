@@ -1,3 +1,5 @@
+import wordleBank from "./assets/wordle-bank.txt";
+
 export const COLORS = {
   white: "0deg 0% 100%",
   black: "0deg 0% 0%",
@@ -19,3 +21,15 @@ export const boardDefault = [
   ["", "", "", "", ""],
   ["", "", "", "", ""],
 ];
+
+export const generateWordSet = async () => {
+  let wordSet;
+
+  await fetch(wordleBank)
+    .then((response) => response.text())
+    .then((result) => {
+      let wordArr = result.split("\n");
+      wordSet = new Set(wordArr);
+    });
+  return { wordSet };
+};

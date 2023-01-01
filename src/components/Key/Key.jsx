@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
+import PropTypes from "prop-types";
 
 const Key = ({ keyVal, bigKey }) => {
   const { onSelectLetter, onEnter, onDelete } = useContext(BoardContext);
-  const handleClick = (e) => {
+  const handleClick = () => {
     if (keyVal === "Enter") {
       onEnter();
     } else if (keyVal === "Delete") {
@@ -19,6 +20,11 @@ const Key = ({ keyVal, bigKey }) => {
       {keyVal}
     </KeyButton>
   );
+};
+
+Key.propTypes = {
+  keyVal: PropTypes.string,
+  bigKey: PropTypes.bool,
 };
 
 const KeyButton = styled.button`
@@ -36,17 +42,17 @@ const KeyButton = styled.button`
     flex: 1.5;
   }
 
-  &.exists {
+  &#exists {
     background-color: var(--color-secondary);
   }
 
-  &.correct {
+  &#correct {
     background-color: var(--color-primary);
   }
 
-  &.wrong {
+  &#wrong {
     background-color: var(--color-gray-500);
-    pointer-events: none;
+    border-color: var(--color-gray-500);
   }
 `;
 
