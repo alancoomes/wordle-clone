@@ -1,28 +1,50 @@
 import React, { useState } from "react";
 import Icon from "../Icon/Icon";
 import styled from "styled-components";
+import UnstyledButton from "../UnstyledButton/UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
+import MenuModal from "../MenuModal/MenuModal";
+import InstructionsModal from "../InstructionsModal/InstructionsModal";
+import SettingsModal from "../SettingsModal/SettingsModal";
 
 export default function Header() {
   const [showMenuModal, setShowMenuModal] = useState(false);
-  const [showInstructionsModal, setInstructionsModal] = useState(false);
+  const [showInstructionsModal, setShowInstructionsModal] = useState(false);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   return (
     <header>
       <Wrapper>
         <Side>
-          <Icon id="menu" size={32} strokeWidth={2}></Icon>
+          <UnstyledButton onClick={() => setShowMenuModal(true)}>
+            <VisuallyHidden>Menu Button</VisuallyHidden>
+            <Icon id="menu" size={32} strokeWidth={2}></Icon>
+          </UnstyledButton>
         </Side>
         <Logo>Randordle</Logo>
         <IconWrapper>
-          <Icon id="help-circle" size={32} strokeWidth={2}>
-            Question Icon
-          </Icon>
-          <Icon id="settings" size={32} strokeWidth={2}>
-            Settings Icon
-          </Icon>
+          <UnstyledButton onClick={() => setShowInstructionsModal(true)}>
+            <VisuallyHidden>Instructions</VisuallyHidden>
+            <Icon id="help-circle" size={32} strokeWidth={2}></Icon>
+          </UnstyledButton>
+          <UnstyledButton onClick={() => setShowSettingsModal(true)}>
+            <VisuallyHidden>Settings</VisuallyHidden>
+            <Icon id="settings" size={32} strokeWidth={2}></Icon>
+          </UnstyledButton>
         </IconWrapper>
       </Wrapper>
+      <MenuModal
+        isOpen={showMenuModal}
+        whenDismiss={() => setShowMenuModal(false)}
+      />
+      <InstructionsModal
+        isOpen={showInstructionsModal}
+        whenDismiss={() => setShowInstructionsModal(false)}
+      />
+      <SettingsModal
+        isOpen={showSettingsModal}
+        whenDismiss={() => setShowSettingsModal(false)}
+      />
     </header>
   );
 }

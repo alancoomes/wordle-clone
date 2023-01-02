@@ -5,7 +5,7 @@ import UnstyledButton from "../UnstyledButton/UnstyledButton";
 import VisuallyHidden from "../VisuallyHidden/VisuallyHidden";
 
 // eslint-disable-next-line react/prop-types
-const MenuModal = ({ isOpen, whenDismiss }) => {
+const InstructionsModal = ({ isOpen, whenDismiss }) => {
   if (!isOpen) {
     return null;
   }
@@ -17,13 +17,12 @@ const MenuModal = ({ isOpen, whenDismiss }) => {
           <VisuallyHidden>Dismiss Menu</VisuallyHidden>
           <Icon id="close" strokeWidth={2} />
         </DismissButton>
-        <Message>More Content Coming Soon!</Message>
       </Content>
     </Overlay>
   );
 };
 
-export default MenuModal;
+export default InstructionsModal;
 
 const Overlay = styled.div`
   position: fixed;
@@ -33,16 +32,14 @@ const Overlay = styled.div`
   left: 0;
   background: var(--color-backdrop);
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   width: 100%;
 `;
-
-const Message = styled.div``;
 
 const DismissButton = styled(UnstyledButton)`
   position: absolute;
   top: 10px;
-  left: 0;
+  right: 0;
   padding: 16px;
 `;
 
@@ -53,7 +50,7 @@ const Content = styled.div`
   height: var(--modal-height);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 32px;
   background-color: var(--color-white);

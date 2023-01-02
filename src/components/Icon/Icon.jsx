@@ -1,9 +1,10 @@
 import React from "react";
-import { Settings, Menu, BarChart2, HelpCircle } from "react-feather";
+import { Settings, Menu, BarChart2, HelpCircle, X } from "react-feather";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const icons = {
+  close: X,
   settings: Settings,
   menu: Menu,
   "bar-chart-2": BarChart2,
