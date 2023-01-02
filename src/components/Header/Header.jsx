@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../Icon/Icon";
 import styled from "styled-components";
 
 export default function Header() {
+  const [showMenuModal, setShowMenuModal] = useState(false);
+  const [showInstructionsModal, setInstructionsModal] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+
   return (
     <header>
       <Wrapper>
