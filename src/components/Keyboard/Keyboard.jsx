@@ -7,7 +7,14 @@ const Keyboard = () => {
   const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const row3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const { onSelectLetter, onDelete, onEnter } = useContext(BoardContext);
+  const {
+    onSelectLetter,
+    onDelete,
+    onEnter,
+    disabledLetters,
+    correctLetters,
+    existsLetters,
+  } = useContext(BoardContext);
 
   const detectKeyDown = useCallback((e) => {
     e.stopPropagation();
@@ -35,14 +42,26 @@ const Keyboard = () => {
     <Wrapper onKeyDown={detectKeyDown}>
       <Row>
         {row1.map((letter) => (
-          <Key key={letter} keyVal={letter} />
+          <Key
+            key={letter}
+            keyVal={letter}
+            disabled={disabledLetters.includes(letter)}
+            correct={correctLetters.includes(letter)}
+            exists={existsLetters.includes(letter)}
+          />
         ))}
       </Row>
 
       <Row>
         <KeyHalf />
         {row2.map((letter) => (
-          <Key key={letter} keyVal={letter} />
+          <Key
+            key={letter}
+            keyVal={letter}
+            disabled={disabledLetters.includes(letter)}
+            correct={correctLetters.includes(letter)}
+            exists={existsLetters.includes(letter)}
+          />
         ))}
         <KeyHalf />
       </Row>
@@ -50,7 +69,13 @@ const Keyboard = () => {
       <Row>
         <Key bigKey keyVal={"Enter"} />
         {row3.map((letter) => (
-          <Key key={letter} keyVal={letter} />
+          <Key
+            key={letter}
+            keyVal={letter}
+            disabled={disabledLetters.includes(letter)}
+            correct={correctLetters.includes(letter)}
+            exists={existsLetters.includes(letter)}
+          />
         ))}
         <Key bigKey keyVal={"Delete"} />
       </Row>

@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
 import PropTypes from "prop-types";
 
 const Letter = ({ letterPos, attemptVal }) => {
-  const { board, correctWord, currAttempt } = useContext(BoardContext);
+  const {
+    board,
+    correctWord,
+    currAttempt,
+    setDisabledLetters,
+    setExistsLetters,
+    setCorrectLetters,
+  } = useContext(BoardContext);
   const letter = board[attemptVal][letterPos];
 
   const correctWordArr = correctWord.toUpperCase().split("");
@@ -22,6 +29,17 @@ const Letter = ({ letterPos, attemptVal }) => {
       : letter !== ""
       ? "wrong"
       : undefined);
+
+  useEffect(() => {
+    if (letter !== "" && !correct && !exists) {
+      setDisabledLetters((prev) => [...prev, letter]);
+    } else if (correct) {
+      setCorrectLetters((prev) => [...prev, letter]);
+    } else if (exists) {
+      setExistsLetters((prev) => [...prev, letter]);
+    }
+  }, [currAttempt.attempt]);
+
   return (
     <Box
       id={letterState ? letterState : undefined}

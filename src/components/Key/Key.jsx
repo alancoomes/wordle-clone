@@ -1,13 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { BoardContext } from "../../App";
 import PropTypes from "prop-types";
 
-const Key = ({ keyVal, bigKey }) => {
+const Key = ({ keyVal, bigKey, disabled, exists, correct }) => {
   const { onSelectLetter, onEnter, onDelete } = useContext(BoardContext);
-  const [guessedLetters, setGuessedLetters] = useState({});
-
-  const
 
   const handleClick = () => {
     if (keyVal === "Enter") {
@@ -19,10 +16,20 @@ const Key = ({ keyVal, bigKey }) => {
     }
   };
 
-
-
   return (
-    <KeyButton id={bigKey && "big"} onClick={handleClick}>
+    <KeyButton
+      id={bigKey && "big"}
+      className={
+        disabled
+          ? "disabled"
+          : correct
+          ? "correct"
+          : exists
+          ? "exists"
+          : undefined
+      }
+      onClick={handleClick}
+    >
       {keyVal}
     </KeyButton>
   );
@@ -31,6 +38,9 @@ const Key = ({ keyVal, bigKey }) => {
 Key.propTypes = {
   keyVal: PropTypes.string,
   bigKey: PropTypes.bool,
+  disabled: PropTypes.bool,
+  exists: PropTypes.bool,
+  correct: PropTypes.bool,
 };
 
 const KeyButton = styled.button`
@@ -48,15 +58,15 @@ const KeyButton = styled.button`
     flex: 1.5;
   }
 
-  &#exists {
+  &.exists {
     background-color: var(--color-secondary);
   }
 
-  &#correct {
+  &.correct {
     background-color: var(--color-primary);
   }
 
-  &#wrong {
+  &.disabled {
     background-color: var(--color-gray-500);
     border-color: var(--color-gray-500);
   }
