@@ -11,12 +11,13 @@ const SettingsModal = ({ isOpen, whenDismiss }) => {
   }
 
   return (
-    <Overlay isOpen={isOpen} whenDismiss={whenDismiss}>
-      <Content aria-label="Menu Content">
+    <Overlay isOpen={isOpen} onClick={whenDismiss}>
+      <Content onClick={(e) => e.stopPropagation()} aria-label="Menu Content">
         <DismissButton onClick={whenDismiss}>
           <VisuallyHidden>Dismiss Menu</VisuallyHidden>
           <Icon id="close" strokeWidth={2} />
         </DismissButton>
+        <div>Advanced Settings coming soon!</div>
       </Content>
     </Overlay>
   );
@@ -49,10 +50,11 @@ const Content = styled.div`
   width: 300px;
   height: var(--modal-height);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 32px;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-700);
+  color: var(--color-white);
 
   @media (max-width: 450px) {
     margin: 0;

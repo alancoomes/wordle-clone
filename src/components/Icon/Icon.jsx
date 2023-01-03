@@ -1,5 +1,12 @@
 import React from "react";
-import { Settings, Menu, BarChart2, HelpCircle, X } from "react-feather";
+import {
+  Settings,
+  Menu,
+  BarChart2,
+  HelpCircle,
+  X,
+  Delete,
+} from "react-feather";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -9,6 +16,7 @@ const icons = {
   menu: Menu,
   "bar-chart-2": BarChart2,
   "help-circle": HelpCircle,
+  delete: Delete,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
