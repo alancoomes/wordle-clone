@@ -57,7 +57,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0px 16px;
-  border-bottom: 2px solid var(--color-gray-300);
+  border-bottom: 2px solid var(--color-gray-500);
 `;
 
 const IconWrapper = styled.div`

@@ -17,6 +17,11 @@ const InstructionsModal = ({ isOpen, whenDismiss }) => {
           <VisuallyHidden>Dismiss Menu</VisuallyHidden>
           <Icon id="close" strokeWidth={2} />
         </DismissButton>
+        <h2>How To Play:</h2>
+        <h4>Guess the word in 6 tries.</h4>
+        <p>Green means letter is in the correct spot!</p>
+        <p>Yellow means letter exists in a different spot.</p>
+        <p>Gray means letter is not in the word.</p>
       </Content>
     </Overlay>
   );
@@ -53,7 +58,8 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-700);
+  color: var(--color-white);
 
   @media (max-width: 450px) {
     margin: 0;

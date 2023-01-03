@@ -75,7 +75,7 @@ html {
     --color-gray-500: hsl(${COLORS.gray[500]});
     --color-gray-700: hsl(${COLORS.gray[700]});
     --color-gray-900: hsl(${COLORS.gray[900]});
-    --color-backdrop: hsl(${COLORS.gray[500]} / .8);
+    --color-backdrop: hsl(${COLORS.black} / .6);
     --header-height: 65px;
     --modal-height: 50%;
     --keyboard-height: 200px;
