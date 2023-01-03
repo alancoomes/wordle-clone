@@ -11,17 +11,16 @@ const Letter = ({ letterPos, attemptVal }) => {
     setDisabledLetters,
     setExistsLetters,
     setCorrectLetters,
+    isFinalGuess,
   } = useContext(BoardContext);
   const letter = board[attemptVal][letterPos];
 
   const correctWordArr = correctWord.toUpperCase().split("");
   const correct = correctWordArr[letterPos] === letter;
   const exists = !correct && correctWordArr.includes(letter);
-  const finalGuess =
-    currAttempt.attempt === 5 && currAttempt.letterPosition === 5;
 
   const letterState =
-    (finalGuess || currAttempt.attempt > attemptVal) &&
+    (isFinalGuess || currAttempt.attempt > attemptVal) &&
     (correct
       ? "correct"
       : exists

@@ -1,6 +1,5 @@
 import { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
-import Alert from "./components/Alert/Alert";
 import GameBoard from "./components/GameBoard/GameBoard";
 import Header from "./components/Header/Header";
 import { boardDefault, generateWordSet } from "./constants";
@@ -18,9 +17,7 @@ function App() {
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [existsLetters, setExistsLetters] = useState([]);
   const [correctLetters, setCorrectLetters] = useState([]);
-  const [gameOver, setGameOver] = useState(false);
-  const [isAlert, setIsAlert] = useState(false);
-  const [alert, setAlert] = useState({ text: "", duration: 0 });
+  const [isFinalGuess, setIsFinalGuess] = useState(false);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -46,28 +43,24 @@ function App() {
 
   const onEnter = () => {
     console.log(correctWord);
+    console.log(currAttempt);
     //Check is guess has 5 letters, TODO: add alert if not
     if (currAttempt.letterPosition !== 5) {
-      const newAlert = { text: "Not Enough Letters", duration: 500 };
-      setIsAlert(true);
-      setAlert(newAlert);
       return;
     }
-    //Check if attempt is last attempt, TODO: fix functionality
-    if (currAttempt.attempt === 5) return;
+
+    if (currAttempt.attempt === 5 && currAttempt.letterPosition === 5) {
+      console.log("final guess");
+      setIsFinalGuess(true);
+    }
 
     let guess = board[currAttempt.attempt];
     //Check if guess is acceptable based on word bank, TODO: add shake animation if failed
     if (!wordSet.has(guess.join("").toLowerCase())) {
-      const newAlert = { text: "Word not Allowed", duration: 500 };
-      setIsAlert(true);
-      setAlert(newAlert);
       return;
     }
     //Check if guess is correct, TODO:
     if (guess.join("").toLowerCase() === correctWord) {
-      setGameOver(true);
-      console.log("guess is correct");
       setCurrAttempt({ attempt: 5, letterposition: 4 });
       return;
     }
@@ -106,14 +99,9 @@ function App() {
           setExistsLetters,
           correctLetters,
           setCorrectLetters,
-          setAlert,
+          isFinalGuess,
         }}
       >
-        <AlertWrapper>
-          {isAlert && !gameOver && (
-            <Alert alertMsg={alert.text} duration={alert.duration} />
-          )}
-        </AlertWrapper>
         <GameBoard />
       </BoardContext.Provider>
     </AppWrapper>
@@ -124,15 +112,4 @@ export default App;
 
 const AppWrapper = styled.div`
   height: 100%;
-`;
-
-const AlertWrapper = styled.div`
-  position: fixed;
-  top: 10vh;
-  left: 50vw;
-  transform: translateX(-50%);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;

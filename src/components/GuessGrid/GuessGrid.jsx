@@ -1,23 +1,7 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { boardDefault } from "../../constants";
 import Letter from "../Letter/Letter";
 
-const GuessGrid = ({ letterObj }) => {
-  const [letterCount, setLetterCount] = useState(0);
-
-  // useEffect(() => {
-  //   const letter = letterObj.letter;
-  //   if (letter === "") return;
-  //   if (letterCount >= 5) return;
-  //   const nextTile = document.querySelector(".tile:not([data-letter])");
-  //   console.log(letter);
-  //   nextTile.dataset.letter = letter;
-  //   nextTile.classList.add("active");
-  //   nextTile.textContent = letter;
-  //   setLetterCount(letterCount + 1);
-  // }, [letterObj]);
-
+const GuessGrid = () => {
   return (
     <GridWrapper>
       <Letter attemptVal={0} letterPos={0}></Letter>
