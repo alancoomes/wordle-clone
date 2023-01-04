@@ -42,15 +42,12 @@ function App() {
   };
 
   const onEnter = () => {
-    console.log(correctWord);
-    console.log(currAttempt);
     //Check is guess has 5 letters, TODO: add alert if not
     if (currAttempt.letterPosition !== 5) {
       return;
     }
 
     if (currAttempt.attempt === 5 && currAttempt.letterPosition === 5) {
-      console.log("final guess");
       setIsFinalGuess(true);
     }
 

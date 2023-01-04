@@ -59,7 +59,8 @@ Letter.propTypes = {
 const Box = styled.div`
   border: 2px solid var(--color-gray-500);
   color: white;
-  display: flex;
+  display: inline-flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
