@@ -1,4 +1,3 @@
-import { Repeat } from "react-feather";
 import styled from "styled-components";
 import Letter from "../Letter/Letter";
 
@@ -71,7 +70,7 @@ const GridWrapper = styled.div`
 
   @media (max-width: 415px) {
     height: 350px;
-    width: calc((350 / 420) * 420);
+    width: calc((350 / 420) * 350px);
   }
 `;
 
