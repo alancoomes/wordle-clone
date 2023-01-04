@@ -71,6 +71,7 @@ const GridWrapper = styled.div`
 
   @media (max-width: 415px) {
     height: 350px;
+    width: calc((350 / 420) * 420);
   }
 `;
 
