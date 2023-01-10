@@ -1,4 +1,5 @@
 import wordleBank from "./assets/wordle-bank.txt";
+import validGuesses from "./assets/valid-guesses.txt";
 
 export const COLORS = {
   white: "0deg 0% 100%",
@@ -22,7 +23,7 @@ export const boardDefault = [
   ["", "", "", "", ""],
 ];
 
-export const generateWordSet = async () => {
+export const generateWordle = async () => {
   let wordSet;
 
   await fetch(wordleBank)
@@ -32,4 +33,16 @@ export const generateWordSet = async () => {
       wordSet = new Set(wordArr);
     });
   return { wordSet };
+};
+
+export const generateWordSet = async () => {
+  let guessSet;
+
+  await fetch(validGuesses)
+    .then((response) => response.text())
+    .then((result) => {
+      let wordArr = result.split("\n");
+      guessSet = new Set(wordArr);
+    });
+  return { guessSet };
 };

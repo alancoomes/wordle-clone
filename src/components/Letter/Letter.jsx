@@ -14,6 +14,8 @@ const Letter = ({ letterPos, attemptVal }) => {
     isFinalGuess,
   } = useContext(BoardContext);
   const letter = board[attemptVal][letterPos];
+  // const guess = board[attemptVal];
+  // console.log(guess);
 
   const correctWordArr = correctWord.toUpperCase().split("");
   const correct = correctWordArr[letterPos] === letter;
