@@ -2,7 +2,7 @@ import { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
 import GameBoard from "./components/GameBoard/GameBoard";
 import Header from "./components/Header/Header";
-import { boardDefault, generateWordSet } from "./constants";
+import { boardDefault, generateWordSet, generateWordle } from "./constants";
 
 export const BoardContext = createContext(boardDefault);
 
@@ -21,8 +21,10 @@ function App() {
 
   useEffect(() => {
     generateWordSet().then((words) => {
-      setWordSet(words.wordSet);
+      setWordSet(words.guessSet);
+    });
 
+    generateWordle().then((words) => {
       const wordArr = Array.from(words.wordSet);
       let randIndex = Math.floor(Math.random() * wordArr.length);
       let newWord = wordArr[randIndex];
