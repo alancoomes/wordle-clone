@@ -67,8 +67,18 @@ const Box = styled.div`
   align-items: center;
   font-size: 2rem;
 
+  @keyframes bounce-in-out {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
   &.active {
     border-color: var(--color-gray-300);
+    animation: bounce-in-out 50ms;
   }
 
   &#exists {
