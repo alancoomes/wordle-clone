@@ -67,18 +67,21 @@ const Box = styled.div`
   align-items: center;
   font-size: 2rem;
 
-  @keyframes bounce-in-out {
-    from {
-      transform: scale(1.1);
+  @keyframes grow-and-shrink {
+    0% {
+      transform: scale(1);
     }
-    to {
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
       transform: scale(1);
     }
   }
 
   &.active {
     border-color: var(--color-gray-300);
-    animation: bounce-in-out 50ms;
+    animation: grow-and-shrink 50ms;
   }
 
   &#exists {
