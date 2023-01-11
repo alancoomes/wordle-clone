@@ -79,6 +79,20 @@ const Box = styled.div`
     }
   }
 
+  @keyframes flip-letter {
+    0% {
+      transform: scale(1, 1);
+      background-color: var(--color-gray-900);
+    }
+    50% {
+      transform: scale(1, 0);
+      background-color: var(--color-gray-900);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+
   &.active {
     border-color: var(--color-gray-300);
     animation: grow-and-shrink 50ms;
@@ -86,14 +100,17 @@ const Box = styled.div`
 
   &#exists {
     background-color: var(--color-secondary);
+    animation: flip-letter 300ms linear;
   }
 
   &#correct {
     background-color: var(--color-primary);
+    animation: flip-letter 300ms linear;
   }
 
   &#wrong {
     background-color: var(--color-gray-500);
     border-color: var(--color-gray-500);
+    animation: flip-letter 300ms linear;
   }
 `;
